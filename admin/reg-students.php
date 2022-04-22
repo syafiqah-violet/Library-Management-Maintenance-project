@@ -88,7 +88,7 @@ header('location:reg-students.php');
                                             <th>Student Name</th>
                                             <th>Email id </th>
                                             <th>Mobile Number</th>
-                                            <th>Reg Date</th>
+                                            <th>Register Date & Time</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -116,7 +116,7 @@ foreach($results as $result)
                                             } else {
 
 
-                                            echo htmlentities("Blocked");
+                                            echo htmlentities("Inactive");
 }
                                             ?></td>
                                             <td class="center">

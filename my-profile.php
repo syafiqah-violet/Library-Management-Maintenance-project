@@ -87,7 +87,7 @@ foreach($results as $result)
 </div>
 
 <div class="form-group">
-<label>Reg Date : </label>
+<label>Register Date & Time: </label>
 <?php echo htmlentities($result->RegDate);?>
 </div>
 <?php if($result->UpdationDate!=""){?>
