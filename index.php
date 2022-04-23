@@ -7,7 +7,8 @@ if ($_SESSION['login'] != '') {
 }
 if (isset($_POST['login'])) {
     //code for captach verification
-    // comment
+    //hello sarah!!
+
 
     $email = $_POST['emailid'];
     $password = md5($_POST['password']);
