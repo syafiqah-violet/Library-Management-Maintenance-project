@@ -8,7 +8,7 @@ $_SESSION['alogin']='';
 if(isset($_POST['login']))
 {
 //code for captach verification
-
+//test for writing access
 
 $username=$_POST['username'];
 $password=md5($_POST['password']);
