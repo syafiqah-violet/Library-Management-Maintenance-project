@@ -53,7 +53,7 @@
             
             </ul>
 
-            <a href="logout.php" class="btn btn-primary pull-right">LOG ME OUT</a>
+            <a href="logout.php" class="btn btn-primary pull-right">Log Out</a>
             
         </div>
     </div>
