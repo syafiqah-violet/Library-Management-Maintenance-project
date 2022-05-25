@@ -119,7 +119,7 @@ Change Password
 <input class="form-control"  type="password" name="confirmpassword" autocomplete="off" required  />
 </div>
 
- <button type="submit" name="change" class="btn btn-info">Change</button> 
+ <button type="submit" name="change" class="btn btn-info" onclick="return confirm('Are you sure you want to change password?');">Change</button> 
 </form>
  </div>
 </div>
