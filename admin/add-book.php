@@ -132,7 +132,41 @@ foreach($results as $result)
 
  <div class="form-group">
  <label>Price<span style="color:red;">*</span></label>
- <input class="form-control" type="text" name="price" autocomplete="off"   required="required" />
+ <div>
+    <select name="currency" id="currency1" onchange="show(this)">
+        <option value="">-- Select --</option>
+    </select>
+    <p id="msg"></p>
+    <input class="form-control" type="text" name="price" autocomplete="off"   required="required" />
+ </div>
+ <script>
+     window.onload = populateSelect();
+
+     function populateSelect() {
+        // CREATE AN XMLHttpRequest OBJECT, WITH GET METHOD.
+        var xhr = new XMLHttpRequest(), 
+            method = 'GET',
+            overrideMimeType = 'application/json',
+            url = '../assets/js/Common-Currency.json'; 
+        
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                
+                // PARSE JSON DATA.
+                var currency = JSON.parse(xhr.responseText);
+                //console.log(currency);
+
+                var ele = document.getElementById('currency1');
+                for (let x in currency) {
+                    // BIND DATA TO <select> ELEMENT.
+                    ele.innerHTML = ele.innerHTML + '<option value="' + currency[x].code + '">' + currency[x].code + '</option>';
+                }
+            }
+        };
+        xhr.open(method, url, true);
+        xhr.send();
+     }
+ </script>
  </div>
 <button type="submit" name="add" class="btn btn-info">Add </button>
 
