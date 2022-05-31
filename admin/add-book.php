@@ -134,11 +134,10 @@ foreach($results as $result)
 
  <div class="form-group">
  <label>Price<span style="color:red;">*</span></label>
- <div>
-    <select name="currency" id="currency" onchange="show(this)">
+ <div style="display: flex;">
+    <select name="currency" id="currency" onchange="show(this)" style="margin: 5px;">
         <option value="">-- Select --</option>
     </select>
-    <p id="msg"></p>
     <input class="form-control" type="text" name="price" autocomplete="off"   required="required" />
  </div>
  <script>
