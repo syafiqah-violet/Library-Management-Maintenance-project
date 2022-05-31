@@ -160,7 +160,7 @@ foreach($results as $result)
                 var ele = document.getElementById('currency');
                 for (let x in currency) {
                     // BIND DATA TO <select> ELEMENT.
-                    ele.innerHTML = ele.innerHTML + '<option value="' + currency[x].code + '">' + currency[x].code + '</option>';
+                    ele.innerHTML = ele.innerHTML + '<option value="' + currency[x].symbol + '">' + currency[x].code + '</option>';
                 }
             }
         };
