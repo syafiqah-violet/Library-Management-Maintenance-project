@@ -14,13 +14,15 @@ $bookname=$_POST['bookname'];
 $category=$_POST['category'];
 $author=$_POST['author'];
 $isbn=$_POST['isbn'];
+$currency=$_POST['currency'];
 $price=$_POST['price'];
-$sql="INSERT INTO  tblbooks(BookName,CatId,AuthorId,ISBNNumber,BookPrice) VALUES(:bookname,:category,:author,:isbn,:price)";
+$sql="INSERT INTO  tblbooks(BookName,CatId,AuthorId,ISBNNumber,BookCurrency,BookPrice) VALUES(:bookname,:category,:author,:isbn,:currency,:price)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':bookname',$bookname,PDO::PARAM_STR);
 $query->bindParam(':category',$category,PDO::PARAM_STR);
 $query->bindParam(':author',$author,PDO::PARAM_STR);
 $query->bindParam(':isbn',$isbn,PDO::PARAM_STR);
+$query->bindParam(':currency',$currency,PDO::PARAM_STR);
 $query->bindParam(':price',$price,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
@@ -133,7 +135,7 @@ foreach($results as $result)
  <div class="form-group">
  <label>Price<span style="color:red;">*</span></label>
  <div>
-    <select name="currency" id="currency1" onchange="show(this)">
+    <select name="currency" id="currency" onchange="show(this)">
         <option value="">-- Select --</option>
     </select>
     <p id="msg"></p>
@@ -156,7 +158,7 @@ foreach($results as $result)
                 var currency = JSON.parse(xhr.responseText);
                 //console.log(currency);
 
-                var ele = document.getElementById('currency1');
+                var ele = document.getElementById('currency');
                 for (let x in currency) {
                     // BIND DATA TO <select> ELEMENT.
                     ele.innerHTML = ele.innerHTML + '<option value="' + currency[x].code + '">' + currency[x].code + '</option>';
