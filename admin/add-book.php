@@ -14,13 +14,15 @@ $bookname=$_POST['bookname'];
 $category=$_POST['category'];
 $author=$_POST['author'];
 $isbn=$_POST['isbn'];
+$currency=$_POST['currency'];
 $price=$_POST['price'];
-$sql="INSERT INTO  tblbooks(BookName,CatId,AuthorId,ISBNNumber,BookPrice) VALUES(:bookname,:category,:author,:isbn,:price)";
+$sql="INSERT INTO  tblbooks(BookName,CatId,AuthorId,ISBNNumber,BookCurrency,BookPrice) VALUES(:bookname,:category,:author,:isbn,:currency,:price)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':bookname',$bookname,PDO::PARAM_STR);
 $query->bindParam(':category',$category,PDO::PARAM_STR);
 $query->bindParam(':author',$author,PDO::PARAM_STR);
 $query->bindParam(':isbn',$isbn,PDO::PARAM_STR);
+$query->bindParam(':currency',$currency,PDO::PARAM_STR);
 $query->bindParam(':price',$price,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
@@ -132,7 +134,40 @@ foreach($results as $result)
 
  <div class="form-group">
  <label>Price<span style="color:red;">*</span></label>
- <input class="form-control" type="text" name="price" autocomplete="off"   required="required" />
+ <div style="display: flex;">
+    <select name="currency" id="currency" onchange="show(this)" style="margin: 5px;">
+        <option value="">-- Select --</option>
+    </select>
+    <input class="form-control" type="text" name="price" autocomplete="off"   required="required" />
+ </div>
+ <script>
+     window.onload = populateSelect();
+
+     function populateSelect() {
+        // CREATE AN XMLHttpRequest OBJECT, WITH GET METHOD.
+        var xhr = new XMLHttpRequest(), 
+            method = 'GET',
+            overrideMimeType = 'application/json',
+            url = '../assets/js/Common-Currency.json'; 
+        
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                
+                // PARSE JSON DATA.
+                var currency = JSON.parse(xhr.responseText);
+                //console.log(currency);
+
+                var ele = document.getElementById('currency');
+                for (let x in currency) {
+                    // BIND DATA TO <select> ELEMENT.
+                    ele.innerHTML = ele.innerHTML + '<option value="' + currency[x].symbol + '">' + currency[x].code + '</option>';
+                }
+            }
+        };
+        xhr.open(method, url, true);
+        xhr.send();
+     }
+ </script>
  </div>
 <button type="submit" name="add" class="btn btn-info">Add </button>
 

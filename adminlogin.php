@@ -8,7 +8,7 @@ $_SESSION['alogin']='';
 if(isset($_POST['login']))
 {
 //code for captach verification
-
+//test for writing access
 
 $username=$_POST['username'];
 $password=md5($_POST['password']);
@@ -69,7 +69,7 @@ echo "<script>alert('Invalid Details');</script>";
 <form role="form" method="post">
 
 <div class="form-group">
-<label>Enter Username</label>
+<label>Username</label>
 <input class="form-control" type="text" name="username" autocomplete="off" required />
 </div>
 <div class="form-group">
