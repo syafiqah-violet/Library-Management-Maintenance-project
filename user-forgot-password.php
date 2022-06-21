@@ -5,10 +5,7 @@ include('includes/config.php');
 if(isset($_POST['change']))
 {
   //code for captach verification
-if ($_POST["vercode"] != $_SESSION["vercode"] OR $_SESSION["vercode"]=='')  {
-        echo "<script>alert('Incorrect verification code');</script>" ;
-    } 
-        else {
+
 $email=$_POST['email'];
 $mobile=$_POST['mobile'];
 $newpassword=md5($_POST['newpassword']);
@@ -32,7 +29,7 @@ else {
 echo "<script>alert('Email id or Mobile no is invalid');</script>"; 
 }
 }
-}
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -97,19 +94,15 @@ return true;
 </div>
 
 <div class="form-group">
-<label>Password</label>
+<label>New Password</label>
 <input class="form-control" type="password" name="newpassword" required autocomplete="off"  />
 </div>
 
 <div class="form-group">
-<label>ConfirmPassword</label>
+<label>Confirm Password</label>
 <input class="form-control" type="password" name="confirmpassword" required autocomplete="off"  />
 </div>
 
- <div class="form-group">
-<label>Verification code : </label>
-<input type="text" class="form-control1"  name="vercode" maxlength="5" autocomplete="off" required  style="height:25px;" />&nbsp;<img src="captcha.php">
-</div> 
 
  <button type="submit" name="change" class="btn btn-info">Change Password</button> | <a href="index.php">Login</a>
 </form>
